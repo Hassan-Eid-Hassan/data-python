@@ -14,7 +14,7 @@ pipeline {
                     echo "$PYTHON_VERSION"
                     echo "$PYTHON_TARGET_VERSION"
                     if (${PYTHON_VERSION} == ${PYTHON_TARGET_VERSION}){
-                        break
+                        echo "ALL Good"
                     }   else {
                         sh "sudo yum remove python3${PYTHON_VERSION} -y"
                         sh "sudo yum install python3${PYTHON_TARGET_VERSION} -y"
