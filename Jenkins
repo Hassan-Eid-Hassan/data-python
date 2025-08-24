@@ -11,6 +11,8 @@ pipeline {
             steps{
                 script{
                     def PYTHON_VERSION = sh(returnStdout: true, script: 'python3 --version | cut -d " " -f 2 | cut -d "." -f 2')
+                    echo "$PYTHON_VERSION"
+                    echo "$PYTHON_TARGET_VERSION"
                     if (${PYTHON_VERSION} == ${PYTHON_TARGET_VERSION}){
                         break
                     }   else {
