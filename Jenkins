@@ -3,7 +3,7 @@ pipeline {
         label 'agent-0' 
     }
     environment{
-        PYTHON_TARGET_VERSION = "8"
+        PYTHON_TARGET_VERSION = "9"
     }
 
     stages {
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Install necessary Python packages
-                    sh "pip install -r requirements.txt"
+                    sh "pip3 install -r requirements.txt"
                 }
             }
         }
