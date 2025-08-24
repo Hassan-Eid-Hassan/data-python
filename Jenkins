@@ -3,14 +3,15 @@ pipeline {
         label 'agent-0' 
     }
     environment{
-        int PYTHON_TARGET_VERSION = "8"
+        PYTHON_TARGET_VERSION = "8"
     }
 
     stages {
         stage("Install python"){
             steps{
                 script{
-                    def int PYTHON_VERSION = sh(returnStdout: true, script: 'python3 --version | cut -d " " -f 2 | cut -d "." -f 2')
+                    def PYTHON_VERSION_SH = sh(returnStdout: true, script: 'python3 --version | cut -d " " -f 2 | cut -d "." -f 2')
+                    def PYTHON_VERSION = PYTHON_VERSION.trim()
                     echo "$PYTHON_VERSION"
                     echo "$PYTHON_TARGET_VERSION"
                     if (PYTHON_VERSION == PYTHON_TARGET_VERSION){
