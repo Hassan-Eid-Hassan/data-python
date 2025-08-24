@@ -59,16 +59,16 @@ pipeline {
             }
         }
 
-        stage('Serve Model') {
-            steps {
-                script {
-                    // Start FastAPI server in the background
-                    sh 'python3 model_serving.py &'
-                    // Wait for the server to start
-                    sleep time: 10, unit: 'SECONDS'
-                }
-            }
-        }
+        // stage('Serve Model') {
+        //     steps {
+        //         script {
+        //             // Start FastAPI server in the background
+        //             sh 'python3 model_serving.py &'
+        //             // Wait for the server to start
+        //             sleep time: 10, unit: 'SECONDS'
+        //         }
+        //     }
+        // }
 
         stage('Test Serve Model') {
             steps {
@@ -85,7 +85,7 @@ pipeline {
         //     steps {
         //         script {
         //             // Trigger another Jenkins job for model serving
-        //             build job: 'ModelServingPipeline', wait: false
+        //             sh "python3 model_serving.py"
         //         }
         //     }
         // }
